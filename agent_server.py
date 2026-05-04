@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 client = OpenAI(
-    api_key="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",
+    api_key=os.getenv("OPENAI_API_KEY"),
     base_url="https://api.groq.com/openai/v1",
 )
 
