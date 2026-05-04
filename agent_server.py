@@ -26,16 +26,17 @@ def process_query():
     data = request.json
     query_text = data.get("text", "")
 
-    def generate_flashcard(query_text):
-        full_prompt = (
-            f"You are a helpful extension that makes flashcards of hint and answer."
-            f"Use the users input to generate the flashcard.\n"
-            f"INPUT: {query_text}\n\n"
-            f"ANSWER:"
-        )
+    full_prompt = (
+        f"You are a helpful extension that makes flashcards of hint and answer.\n"
+        f"INPUT: {query_text}\n\n"
+        f"ANSWER:"
+    )
 
-        ai_answer = llm(full_prompt)
-        print(ai_answer)
+    ai_answer = llm(full_prompt)
+
+    return jsonify({
+        "response": ai_answer
+    })
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
