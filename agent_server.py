@@ -19,7 +19,7 @@ def get_db_connection():
     )
 
 client = OpenAI(
-    api_key="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",
+    api_key="***REMOVED***",
     base_url="https://api.groq.com/openai/v1",
 )
 
