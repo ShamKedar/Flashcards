@@ -19,17 +19,17 @@ def get_db_connection():
     )
 
 client = OpenAI(
-    api_key="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",
+    api_key=os.getenv("OPENAI_API_KEY"),
     base_url="https://api.groq.com/openai/v1",
 )
 
 def llm(prompt):
     response = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model="openai/gpt-oss-20b",
         messages=[
             {
                 "role": "system", 
-                "content": "You are a helpful flashcard generator. You must always format your output strictly as 'HINT: [your hint text here] ||| ANSWER: [your answer text here]'. Do not include any other conversational filler text."
+                "content": "You are a helpful flashcard generator. You must always format your output strictly as 'HINT: [your hint text here] ||| ANSWER: [your answer text here]'. Create pointwise answers if needed. Do not include any other conversational filler text."
             },
             {"role": "user", "content": prompt}
         ]
